@@ -1,3 +1,5 @@
+IMPORTANT: Не рекомендуется использовать docker на *WINDOWS*, или *MAC OS*, для production среды. Используйте *LINUX OS*. https://stackoverflow.com/questions/45554311/docker-on-windows-in-production[stackoverflow]. https://blog.docker.com/2016/07/docker-for-mac-and-windows-production-ready/[Our goal with Docker for Mac and Windows is simple – create the easiest way to use Docker on your dev machine].
+
 include::../../hardware-requirements.adoc[]
 
 == Инструкция по разворачиванию на WINDOWS (VirtualBox)
