@@ -20,7 +20,7 @@ TIP: В случае, когда `RABBITMQ`, `ELASTICSEARCH`, или `MYSQL` р�
 RabbitMQ::
 
 * https://www.rabbitmq.com/clustering.html[установка RABBITMQ_CLUSTER без DOCKER]
-* https://github.com/harbur/docker-rabbitmq-cluster[RABBITMQ_CLUSTER для DOCKER]
+* https://github.com/bijukunjummen/docker-rabbitmq-cluster[RABBITMQ_CLUSTER для DOCKER]
 
 Elasticsearch (версия развернутого ES должна быть 5.6.8)::
 
