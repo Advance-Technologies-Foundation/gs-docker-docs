@@ -1,0 +1,61 @@
+== Инструкция по разворачиванию на LINUX
+
+== Необходимые зависимости:
+
+Для разворачивания компонентов глобального поиска вам потребуется установить docker на linux:
+
+* https://docs.docker.com/install/linux/docker-ce/debian/[Установка DOCKER]
+
+TIP: Для проверки версии установленого docker запустите команду: `` docker --version ``
+
+include::../gs-components-descriptions.adoc[]
+
+== Настройка переменных контейнеров
+
+Все контейнеры компонентов глобального поиска конфигурируются из файла с переменными среды (_environment variables_)
+* Базовый файл с переменными - *Docker/linux/default-env*
+
+=== Укажите значения таким переменным, изменив файл _Docker/linux/default-env_
+
+TIP: Для bpm’online приложений использующих ORACLE БД необходимо изменить переменную `GS_WORKER_DB_CONNECTION_STRING_PATTERN` в файле _Docker/linux/oracle-env_
+
+include::../environments.adoc[]
+
+** В файле _Docker/linux/mysql-env_ змените строку подключения к mysql `GS_DB_CONNECTION_STRING`, только если у вас отдельно развернут mysql
+*** server=gs-mysql - хост 
+*** user id=$MYSQL_USER - пользователь
+*** pwd=$MYSQL_PASSWORD - пароль
+
+== Запуск контейнеров
+
+include::../ports-bindings.adoc[]
+
+Скопируйте папку Docker из дистрибутива на linux машину и запустите команду:
+
+Для MSSQL приложения::
+```
+sh Docker/linux/run.sh mysql mssql 1.0
+```
+
+Для Oracle приложения::
+```
+sh Docker/linux/run.sh mysql oracle 1.0
+```
+
+== После успешного запуска контейнеров будут автоматически смонтированы docker volumes:
+
+* globalsearch (используют gs-web-api, gs-worker)
+* es1 если RUN_ELASTICSEARCH=1 (es-node1)
+* es2 если RUN_ELASTICSEARCH=1 (es-node2)
+* mysql если RUN_MYSQL=1
+* rabbitmq если RUN_RABBITMQ=1
+
+include::../volumes.adoc[]
+
+TIP: В случае падения одного из контейнеров (*mysql*, *rabbitmq*, или *elasticsearch*), данные будут сохранятся на внешнем диске, из вне docker контейнера. https://docs.docker.com/storage/volumes/[Подробнее о docker volumes]. 
+
+include::../check-after-run.adoc[]
+
+include::../logging.adoc[]
+
+include::../enabled-gs-in-bpm.adoc[]

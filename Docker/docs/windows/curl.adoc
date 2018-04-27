@@ -1,0 +1,17 @@
+TIP: Для http запросов необходимо установить curl. https://curl.haxx.se/download.html[для windows].
+
+1 шаг::
+Выполнить API-операцию AddSite, указав *[site name]* - название БД bpm’online (например - SalesTeamENU) и *[gs-web-api]* - внешний адрес https://hub.docker.com/r/bpmonline/gs-web-api/[gs-web-api контейнера], развернутого на предыдущем шаге.
+
+```
+curl -v -H "Content-Type: application/json" -X POST "http://[gs-web-api]:81/addsite" -d "{\"ApiKey\": \"testKey\", \"SiteName\": \"[site name]\"}"
+```
+
+2 шаг::
+Выполнить API-операцию AddSearch, указав *[site name]* - название БД bpm’online (например - SalesTeamENU) и *[gs-web-api]* - внешний адрес https://hub.docker.com/r/bpmonline/gs-web-api/[gs-web-api контейнера], развернутого на предыдущем шаге.
+
+```
+curl -v -H "Content-Type: application/json" -X POST "http://[gs-web-api]:81/addsearch" -d "{\"ApiKey\": \"testKey\", \"SiteName\": \"[site name]\"}"
+```
+
+TIP: Запрос выше вернет путь к созданому индексу в ElasticSearch, его нужно запомнить и использовать в sql скрипте установки системных настроек, ниже.

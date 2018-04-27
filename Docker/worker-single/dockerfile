@@ -1,0 +1,12 @@
+dotnet Cloud.WorkerHost.dllFROM gs-worker-host AS build
+
+WORKDIR /src/Src/GlobalSearch.Worker.Single.Executor
+RUN dotnet publish -c Release -o /tmp/app
+
+FROM build AS final
+WORKDIR /app
+
+COPY --from=build /tmp/app .
+COPY --from=build /src/Src/GlobalSearch.Worker.Single.Executor/appsettings.json .
+
+ENTRYPOINT ["dotnet", "Cloud.WorkerHost.dll"]

@@ -1,0 +1,67 @@
+include::../hardware-requirements.adoc[]
+
+== Инструкция по разворачиванию на WINDOWS
+
+== Необходимые зависимости:
+
+Для разворачивания компонентов глобального поиска вам потребуется установить docker на WINDOWS:
+
+* https://docs.docker.com/docker-for-windows/install/[Установка DOCKER]
+
+TIP: Для проверки версии установленого docker запустите команду: `` docker --version ``
+
+include::../gs-components-descriptions.adoc[]
+
+== Настройка переменных контейнеров
+
+Все контейнеры компонентов глобального поиска конфигурируются из файла с переменными среды (_environment variables_)
+* Базовый файл с переменными - *Docker\win\default-env*
+
+=== Укажите значения таким переменным, изменив файл _Docker\win\default-env_
+
+TIP: Для bpm’online приложений использующих ORACLE БД необходимо изменить переменную `GS_WORKER_DB_CONNECTION_STRING_PATTERN` в файле _Docker\win\oracle-env_
+
+include::../environments.adoc[]
+
+** В файле _Docker\win\mysql-env_ змените строку подключения к mysql `GS_DB_CONNECTION_STRING`, только если у вас отдельно развернут mysql
+*** server=gs-mysql - хост 
+*** user id=$MYSQL_USER - пользователь
+*** pwd=$MYSQL_PASSWORD - пароль
+
+== Создайте папку C:\data
+
+* Разрешите использовать диск `C` для контейнеров в docker меню - `Settings > Share drive`. (Правый шелчек мыши по иконке запущеного докера в трее)
+* Создайте такие папки внутри папки C:\data
+** `es1`
+** `es2`
+** `rabbitmq`
+** `mysql`
+** `globalsearch`
+
+== Запуск контейнеров
+
+include::../ports-bindings.adoc[]
+
+Скопируйте папку Docker из дистрибутива на windows машину и запустите команду:
+
+Для MSSQL приложения::
+```
+Docker\win\run.bat mysql mssql 1.0
+```
+
+Для Oracle приложения::
+```
+Docker\win\run.bat mysql oracle 1.0
+```
+
+== После успешного запуска контейнеров будут автоматически смонтированы docker volumes:
+
+include::../volumes.adoc[]
+
+TIP: В случае падения одного из контейнеров *elasticsearch*, данные будут сохранятся на внешнем диске, из вне docker контейнера. https://docs.docker.com/storage/volumes/[Подробнее о docker volumes]. 
+
+include::../check-after-run.adoc[]
+
+include::../logging.adoc[]
+
+include::../enabled-gs-in-bpm.adoc[]

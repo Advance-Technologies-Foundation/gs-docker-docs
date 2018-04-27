@@ -1,0 +1,18 @@
+== Проверка удачного запуска контейнеров 
+
+Для просмотра всех запущенных контейнеров введите команду `*docker ps -a*`
+
+Должны быть запущены сл. контейнеры:
+
+* `gs-scheduler`
+* `gs-worker`
+** `gs-worker1`
+** `gs-worker2`
+** `gs-worker3`
+* `gs-worker-replay`
+* `gs-web-api` - по-умолчанию внешний порт *81*
+* `ES`, если `RUN_ELASTICSEARCH = 1`
+** `es-node1`
+** `es-node2`
+* `rabbitmq`, если `RUN_RABBITMQ = 1`
+* `gs-mysql`, если `RUN_MYSQL = 1`

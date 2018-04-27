@@ -1,0 +1,4 @@
+
+TIP: Монтирование внутри контейнеров глобального поиска происходит по пути `*/usr/share/globalsearch*`
+
+TIP: `*docker volume inspect globalsearch*` выводит инф. о созданом volume.

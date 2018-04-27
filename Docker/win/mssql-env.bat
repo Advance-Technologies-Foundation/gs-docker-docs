@@ -1,0 +1,2 @@
+SET GS_COMMON_DB_DIALECT_PROVIDER="ServiceStack.OrmLite.SqlServerDialect, ServiceStack.OrmLite.SqlServer, Culture=neutral, PublicKeyToken=null"
+SET GS_DB_CONNECTION_STRING="Server=tscore-dev-15\\mssql2012; Database=azmanager-gss; User Id=gs; Password=!Prisoner31!; Connection Timeout=10"

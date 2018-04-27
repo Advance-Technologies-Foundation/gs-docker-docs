@@ -1,0 +1,2 @@
+SET GS_COMMON_DB_DIALECT_PROVIDER="ServiceStack.OrmLite.MySqlDialect, ServiceStack.OrmLite.MySql, Culture=neutral, PublicKeyToken=null"
+SET GS_DB_CONNECTION_STRING="database=gs; server=gs-mysql; user id=%MYSQL_USER%; pwd=%MYSQL_PASSWORD%; persistsecurityinfo=True; SslMode=none"

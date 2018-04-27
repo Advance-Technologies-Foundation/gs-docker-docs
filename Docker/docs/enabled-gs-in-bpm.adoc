@@ -1,0 +1,90 @@
+== Подключение сервиса глобального поиска в bpm’online
+
+Чтобы подключить глобальный поиск в bpm’online, необходимо:
+
+TIP: первые два шага отличаются для windows/linux платформы
+
+=== Для WINDOWS:
+
+include::windows/curl.adoc[]
+
+=== Для LINUX:
+
+include::linux/curl.adoc[]
+
+3 шаг::
+Включить глобальный поиск в bpm’online. Выполнить два скрипта, ниже, в базе данных BPM:
+
+	SQL скрипт включения фичи глобального поиска (GlobalSearch, GlobalSearch_V2):
+
+[source,sql]
+----
+DECLARE @GlobalSearchFeature NVARCHAR(50) = 'GlobalSearch';
+DECLARE @GlobalSearchFeatureId UNIQUEIDENTIFIER = (SELECT TOP 1 Id
+FROM Feature WHERE Code = @GlobalSearchFeature);
+DECLARE @GlobalSearchV2Feature NVARCHAR(50) = 'GlobalSearch_V2';
+DECLARE @GlobalSearchV2FeatureId UNIQUEIDENTIFIER = (SELECT TOP 1 Id
+FROM Feature WHERE Code = @GlobalSearchV2Feature);
+DECLARE @allEmployeesId UNIQUEIDENTIFIER = 'A29A3BA5-4B0D-DE11-9A51-005056C00008';
+
+IF (@GlobalSearchFeatureId IS NOT NULL) 
+ BEGIN
+   IF EXISTS (SELECT * FROM AdminUnitFeatureState WHERE FeatureId =
+@GlobalSearchFeatureId)
+     UPDATE AdminUnitFeatureState SET FeatureState = 1 WHERE FeatureId
+= @GlobalSearchFeatureId
+    ELSE      
+     INSERT INTO AdminUnitFeatureState (SysAdminUnitId, FeatureState,
+ FeatureId) VALUES (@allEmployeesId, '1',
+@GlobalSearchFeatureId)
+ END
+ELSE
+ BEGIN
+   SET @GlobalSearchFeatureId = NEWID()
+   INSERT INTO Feature (Id, Name, Code) VALUES
+(@GlobalSearchFeatureId, @GlobalSearchFeature, @GlobalSearchFeature)
+   INSERT INTO AdminUnitFeatureState (SysAdminUnitId, FeatureState,
+ FeatureId) VALUES (@allEmployeesId, '1',
+@GlobalSearchFeatureId)
+ END
+
+IF (@GlobalSearchV2FeatureId IS NOT NULL) 
+ BEGIN
+   IF EXISTS (SELECT * FROM AdminUnitFeatureState WHERE FeatureId =
+@GlobalSearchV2FeatureId)
+     UPDATE AdminUnitFeatureState SET FeatureState = 1 WHERE FeatureId
+= @GlobalSearchV2FeatureId
+    ELSE      
+     INSERT INTO AdminUnitFeatureState (SysAdminUnitId, FeatureState,
+ FeatureId) VALUES (@allEmployeesId, '1',
+@GlobalSearchV2FeatureId)
+ END
+ELSE
+ BEGIN
+   SET @GlobalSearchV2FeatureId = NEWID()
+   INSERT INTO Feature (Id, Name, Code) VALUES
+(@GlobalSearchV2FeatureId, @GlobalSearchV2Feature,
+@GlobalSearchV2Feature)
+   INSERT INTO AdminUnitFeatureState (SysAdminUnitId, FeatureState,
+ FeatureId) VALUES (@allEmployeesId, '1',
+@GlobalSearchV2FeatureId)
+ END
+----
+
+	SQL скрипт установки системных настроек (GlobalSearchUrl, GlobalSearchConfigServiceUrl):
+
+[source,sql]
+----
+UPDATE SysSettingsValue
+SET TextValue = [укажите URL к индексу ElasticSearch, строка, сл. типа - http://elasticsearch.local:9200/indexnamelong]
+WHERE SysSettingsId = (SELECT TOP 1 Id FROM SysSettings WHERE Code =
+ 'GlobalSearchUrl')
+
+ UPDATE SysSettingsValue
+SET TextValue = [укажите URL к Global Search Service, строка, сл. типа - http://gs-web-api:81]
+WHERE SysSettingsId = (SELECT TOP 1 Id FROM SysSettings WHERE Code ='GlobalSearchConfigServiceUrl')
+----
+
+
+4 шаг::
+Перезапустить приложение bpm’online, почистить redis и выполнить вход в приложение.

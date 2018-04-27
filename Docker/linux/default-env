@@ -1,0 +1,49 @@
+export WEB_API_PORT=81
+
+export RUN_ELASTICSEARCH=1
+export RUN_RABBITMQ=1
+export RUN_MYSQL=1
+
+export GLOBALSEARCH_VOLUME="globalsearch"
+export ES1_VOLUME="es1"
+export ES2_VOLUME="es2"
+export RABBITMQ_VOLUME="rabbitmq"
+export MYSQL_VOLUME="mysql"
+
+export RABBITMQ_IP=172.18.0.10 
+export ELASTICSEARCH_IP=172.18.0.11
+export MYSQL_IP=172.18.0.12
+
+export MYSQL_USER=gs
+export MYSQL_PASSWORD=1665017
+
+export GS_RABBITMQ_AMQP="amqp://gs:gs@rabbitmq:5672/"
+export GS_RABBITMQ_QUEUE_NAME_INBOX="inbox"
+export GS_RABBITMQ_QUEUE_NAME_OUTBOX="outbox"
+export GS_RABBITMQ_QUEUE_NAME_SINGLE_INBOX="single-inbox"
+
+export GS_DB_BATCH_SIZE="2000"
+export GS_DB_INCREMENT_DAYS="500"
+export GS_DB_FILL_QUEUE_INTERVAL="30000"
+export GS_DB_SERVER_NAME_TEMPLATE="{0}"
+export GS_DATACENTER_NAME="OnSiteDataCenter"
+
+export GS_ES_URL="http://[LinuxHostName]:9200"
+export GS_ES_LOGIN=""
+export GS_ES_PASSWORD=""
+export GS_REQUEST_TIMEOUT="600000"
+export GS_API_KEY="testKey"
+
+export GS_CONFIG_DIRECTORY="/usr/share/globalsearch/fileConfigs/"
+
+export DOCKER_HUB_LOGIN="bpmonline/"
+
+export SCHEDULER_CONFIG_FOLDER="SchedulerConfig"
+export WEB_API_CONFIG_FOLDER="WebAppConfig"
+export WEB_INDEXING_SERVICE_CONFIG_FOLDER="WebIndexindServiceConfig"
+export WORKER_CONFIG_FOLDER="WorkerConfig"
+export WORKER_REPLAY_CONFIG_FOLDER="ReplayWorkerConfig"
+export WORKER_SINGLE_CONFIG_FOLDER="WorkerSingleConfig"
+
+export GS_WORKER_DB_DIALECT_PROVIDER="ServiceStack.OrmLite.SqlServerDialect, ServiceStack.OrmLite.SqlServer, Culture=neutral, PublicKeyToken=null"
+export GS_WORKER_DB_CONNECTION_STRING_PATTERN="Server=[DBServerName]; Database=[DBName]; User Id=[DBLogin]; Password=[DBPassword]; Connection Timeout=10"
