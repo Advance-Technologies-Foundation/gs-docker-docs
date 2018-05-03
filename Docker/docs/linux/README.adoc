@@ -1,5 +1,7 @@
 == Инструкция по разворачиванию на LINUX
 
+include::../guthub-files.adoc[]
+
 include::../hardware-requirements.adoc[]
 
 == Необходимые зависимости:

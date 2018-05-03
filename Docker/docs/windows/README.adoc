@@ -1,5 +1,7 @@
 IMPORTANT: Не рекомендуется использовать docker на *WINDOWS*, или *MAC OS*, для production среды. Используйте *LINUX OS*.
 
+include::../guthub-files.adoc[]
+
 include::../hardware-requirements.adoc[]
 
 == Инструкция по разворачиванию на WINDOWS
