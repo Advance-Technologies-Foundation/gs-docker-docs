@@ -7,7 +7,7 @@ DOCKER_TAG=$3
 export DOCKER_TAG=$DOCKER_TAG
 
 if [ -z "$COMMON_DB_TYPE" ]; then
-   echo "ERROR: You must set COMMON_DB_TYPE (mssql or sqllite) 'Docker/linux/run.sh [COMMON_DB_TYPE] [WORKER_DB_TYPE] [DOCKER_TAG]'"
+   echo "ERROR: You must set COMMON_DB_TYPE (mysql or mssql) 'Docker/linux/run.sh [COMMON_DB_TYPE] [WORKER_DB_TYPE] [DOCKER_TAG]'"
    exit
 fi
 

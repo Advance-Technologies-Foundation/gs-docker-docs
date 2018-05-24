@@ -7,3 +7,7 @@ COPY . .
 
 WORKDIR /src/Ref/Cloud.WorkerHost
 RUN dotnet publish -c Release -o /tmp/app
+
+FROM base AS final
+WORKDIR /app
+COPY --from=build /tmp/app .

@@ -1,11 +1,17 @@
-dotnet Cloud.WorkerHost.dllFROM gs-worker-host AS build
+FROM gs-worker-host AS worker-host
 
+FROM microsoft/aspnetcore-build:2.0 AS build
+COPY . /src
 WORKDIR /src/Src/GlobalSearch.Worker.Single.Executor
+
 RUN dotnet publish -c Release -o /tmp/app
 
-FROM build AS final
+FROM microsoft/aspnetcore:2.0 AS aspnetcore
+
+FROM aspnetcore AS final
 WORKDIR /app
 
+COPY --from=worker-host /app .
 COPY --from=build /tmp/app .
 COPY --from=build /src/Src/GlobalSearch.Worker.Single.Executor/appsettings.json .
 
