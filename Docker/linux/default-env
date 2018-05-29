@@ -3,7 +3,7 @@ export WEB_API_PORT=81
 export RUN_ELASTICSEARCH=1
 export RUN_ELASTICSEARCH=0
 export RUN_RABBITMQ=0
-export RUN_MYSQL=1
+export RUN_MYSQL=0
 
 export GLOBALSEARCH_VOLUME="globalsearch"
 export ES1_VOLUME="es1"
