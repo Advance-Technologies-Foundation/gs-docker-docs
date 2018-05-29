@@ -36,7 +36,6 @@ if [ $WORKER_DB_TYPE = "oracle" ]; then
 	. Docker/linux/oracle-env
 fi
 
-docker volume create globalsearch
 if [ $RUN_ELASTICSEARCH = 1 ]; then
    docker volume create es1
    docker volume create es2

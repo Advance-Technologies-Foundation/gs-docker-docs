@@ -6,7 +6,6 @@ if [ -z "$WORKER_NAME" ]; then
 fi
 docker run -d \
 	--name $WORKER_NAME \
-	-v $GLOBALSEARCH_VOLUME:/usr/share/globalsearch/ \
 	-e DbDialectProvider="$GS_WORKER_DB_DIALECT_PROVIDER" \
 	-e DBConnectionConfigPattern="$GS_WORKER_DB_CONNECTION_STRING_PATTERN" \
 	-e elasticLogin="$GS_ES_LOGIN" \

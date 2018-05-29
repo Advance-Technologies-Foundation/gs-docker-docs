@@ -8,5 +8,6 @@ docker run -d \
 	-e RabbitMQSettings__DBServerNameTemplate="$GS_DB_SERVER_NAME_TEMPLATE" \
 	--net net1 \
 	--add-host rabbitmq:"$RABBITMQ_IP" \
+	--add-host gs-mysql:"$MYSQL_IP" \
 	-p 82:80 \
 	"$DOCKER_HUB_LOGIN""gs-web-indexing-service:""$DOCKER_TAG"

@@ -1,7 +1,6 @@
 #!/bin/bash
 docker run -d \
 	--name gs-worker-single \
-	-v globalsearch:/usr/share/globalsearch/ \
 	-e DbDialectProvider="$GS_WORKER_DB_DIALECT_PROVIDER" \
 	-e DBConnectionConfigPattern="$GS_WORKER_DB_CONNECTION_STRING_PATTERN" \
 	-e elasticLogin="$GS_ES_LOGIN" \

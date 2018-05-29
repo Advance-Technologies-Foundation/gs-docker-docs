@@ -1,7 +1,6 @@
 #!/bin/bash
 docker run -d \
 	--name gs-web-api \
-	-v $GLOBALSEARCH_VOLUME:/usr/share/globalsearch/ \
 	-e DbDialectProvider="$GS_COMMON_DB_DIALECT_PROVIDER" \
 	-e ApiKey="$GS_API_KEY" \
 	-e RequestTimeOut="$GS_REQUEST_TIMEOUT" \

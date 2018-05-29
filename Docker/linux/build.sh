@@ -1,4 +1,5 @@
 #!/bin/bash
+svn update
 . Docker/linux/default-env
 
 DOCKER_TAG=$1
