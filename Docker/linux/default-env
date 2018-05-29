@@ -34,8 +34,6 @@ export GS_ES_PASSWORD=""
 export GS_REQUEST_TIMEOUT="600000"
 export GS_API_KEY="testKey"
 
-export GS_CONFIG_DIRECTORY="/usr/share/globalsearch/fileConfigs/"
-
 export DOCKER_HUB_LOGIN="bpmonline/"
 
 export GS_WORKER_DB_DIALECT_PROVIDER="ServiceStack.OrmLite.SqlServerDialect, ServiceStack.OrmLite.SqlServer, Culture=neutral, PublicKeyToken=null"
