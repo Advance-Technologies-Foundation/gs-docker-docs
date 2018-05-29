@@ -38,12 +38,5 @@ export GS_CONFIG_DIRECTORY="/usr/share/globalsearch/fileConfigs/"
 
 export DOCKER_HUB_LOGIN="bpmonline/"
 
-export SCHEDULER_CONFIG_FOLDER="SchedulerConfig"
-export WEB_API_CONFIG_FOLDER="WebAppConfig"
-export WEB_INDEXING_SERVICE_CONFIG_FOLDER="WebIndexindServiceConfig"
-export WORKER_CONFIG_FOLDER="WorkerConfig"
-export WORKER_REPLAY_CONFIG_FOLDER="ReplayWorkerConfig"
-export WORKER_SINGLE_CONFIG_FOLDER="WorkerSingleConfig"
-
 export GS_WORKER_DB_DIALECT_PROVIDER="ServiceStack.OrmLite.SqlServerDialect, ServiceStack.OrmLite.SqlServer, Culture=neutral, PublicKeyToken=null"
 export GS_WORKER_DB_CONNECTION_STRING_PATTERN="Server=[DBServerName]; Database=[DBName]; User Id=[DBLogin]; Password=[DBPassword]; Connection Timeout=10"

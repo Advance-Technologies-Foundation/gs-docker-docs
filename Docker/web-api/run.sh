@@ -6,7 +6,6 @@ docker run -d \
 	-e RequestTimeOut="$GS_REQUEST_TIMEOUT" \
 	-e elasticLogin="$GS_ES_LOGIN" \
 	-e elasticPassword="$GS_ES_PASSWORD" \
-	-e OnSiteClientSettings__ConfigDirectory="$GS_CONFIG_DIRECTORY" \
 	-e OnSiteClientSettings__ElasticSearchUrl="$GS_ES_URL" \
 	-e connectionStrings__db="$GS_DB_CONNECTION_STRING" \
 	-e connectionStrings__RabbitMQ="$GS_RABBITMQ_AMQP" \
