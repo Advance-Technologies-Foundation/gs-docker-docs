@@ -9,6 +9,7 @@ docker run -d \
 	-e xpack.watcher.enabled=false \
 	-e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
 	--net net1 \
+	--ip $ELASTICSEARCH_IP \
 	-p 9200:9200 \
 	-p 9300:9300 \
 	--name es-node1 \
